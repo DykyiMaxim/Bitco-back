@@ -1,0 +1,1 @@
+web: build/install/Bitco-back/bin/Bitco-back
