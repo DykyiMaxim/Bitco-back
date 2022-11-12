@@ -37,6 +37,9 @@ dependencies {
     implementation("io.ktor:ktor-server-netty-jvm:$ktor_version")
     implementation("ch.qos.logback:logback-classic:$logback_version")
 
+    implementation ("io.ktor:ktor-auth:1.6.8")
+    implementation ("io.ktor:ktor-auth-jwt:1.6.8")
+
     implementation( "org.jetbrains.exposed:exposed-core:$exposed_version")
     implementation( "org.jetbrains.exposed:exposed-dao:$exposed_version")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposed_version")

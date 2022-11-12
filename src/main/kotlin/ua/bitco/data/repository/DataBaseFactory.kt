@@ -2,7 +2,7 @@ package ua.bitco.data.repository
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
-import data.Tables.UserTable
+import ua.bitco.data.tables.UserTable
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.jetbrains.exposed.sql.Database
