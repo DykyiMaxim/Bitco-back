@@ -1,4 +1,4 @@
-package data.Tables
+package ua.bitco.data.tables
 
 import org.jetbrains.exposed.sql.Table
 
