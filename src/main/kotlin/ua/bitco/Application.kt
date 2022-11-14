@@ -32,10 +32,6 @@ fun Application.module() {
     val hashFunction = {s:String -> hash(s)}
 
 
-    install(ContentNegotiation) {
-        gson {
-        }
-    }
 
 
     routing {
