@@ -31,7 +31,6 @@ fun Application.module() {
     val jwtService = JwtService()
     val hashFunction = {s:String -> hash(s)}
 
-    install(Locations)
 
     install(ContentNegotiation) {
         gson {
