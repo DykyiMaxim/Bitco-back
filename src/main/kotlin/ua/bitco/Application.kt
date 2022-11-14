@@ -1,11 +1,14 @@
 package ua.bitco
 
 import authentication.JwtService
+import io.ktor.auth.*
 import io.ktor.http.*
+import io.ktor.serialization.gson.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.locations.*
 import io.ktor.server.netty.*
+import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import ua.bitco.data.authentication.hash
@@ -14,12 +17,11 @@ import ua.bitco.data.repository.repo
 import ua.bitco.plugins.*
 import ua.bitco.data.routes.*
 
-fun main() {
-    embeddedServer(Netty, port = System.getenv("PORT").toInt(), host = "0.0.0.0", module = Application::module)
-        .start(wait = true)
-}
+fun main(args:Array<String>):Unit = io.ktor.server.netty.EngineMain.main(args)
 
 @OptIn(KtorExperimentalLocationsAPI::class)
+@Suppress("unused")
+@kotlin.jvm.JvmOverloads
 fun Application.module() {
     configureSerialization()
     configureRouting()
@@ -29,8 +31,13 @@ fun Application.module() {
     val jwtService = JwtService()
     val hashFunction = {s:String -> hash(s)}
 
-    install(Locations) {
+    install(Locations)
+
+    install(ContentNegotiation) {
+        gson {
+        }
     }
+
 
     routing {
         get("/") {
