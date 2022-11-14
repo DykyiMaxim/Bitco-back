@@ -26,7 +26,7 @@ fun Application.module() {
     configureSerialization()
     configureRouting()
 
-    DataBaseFactory.init()
+    //DataBaseFactory.init()
     val db = repo()
     val jwtService = JwtService()
     val hashFunction = {s:String -> hash(s)}
@@ -43,7 +43,7 @@ fun Application.module() {
         get("/") {
             call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
         }
-        UserRoutes(db,jwtService, hashFunction)
+        //UserRoutes(db,jwtService, hashFunction)
 
 
 
