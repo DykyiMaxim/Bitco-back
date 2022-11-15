@@ -1,1 +1,1 @@
-web: build/install/Bitco-back/bin/Bitco-back
+web: build/libs/Bitco-back-all.jar

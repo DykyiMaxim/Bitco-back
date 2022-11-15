@@ -1,3 +1,4 @@
+
 val ktor_version: String by project
 val kotlin_version: String by project
 val logback_version: String by project
@@ -9,6 +10,7 @@ plugins {
     kotlin("jvm") version "1.7.21"
     id("io.ktor.plugin") version "2.1.3"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.7.21"
+    id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
 group = "ua.bitco"
@@ -28,9 +30,12 @@ tasks.create("stage"){
     dependsOn("installDist")
 }
 
+
 repositories {
     mavenCentral()
+    gradlePluginPortal()
 }
+
 
 dependencies {
     implementation("io.ktor:ktor-server-core-jvm:$ktor_version")
