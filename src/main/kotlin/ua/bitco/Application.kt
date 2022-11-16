@@ -9,6 +9,7 @@ import io.ktor.server.engine.*
 import io.ktor.server.locations.*
 import io.ktor.server.netty.*
 import io.ktor.server.plugins.contentnegotiation.*
+import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import ua.bitco.data.authentication.hash
@@ -16,6 +17,8 @@ import ua.bitco.data.repository.DataBaseFactory
 import ua.bitco.data.repository.repo
 import ua.bitco.plugins.*
 import ua.bitco.data.routes.*
+import ua.bitco.domain.model.RegisterRequest
+import ua.bitco.domain.model.SimpleRequest
 
 fun main(args:Array<String>):Unit = io.ktor.server.netty.EngineMain.main(args)
 
@@ -33,13 +36,15 @@ fun Application.module() {
 
 
 
+
+
     routing {
+
         get("/") {
             call.respondText("HELLO WORLD!", contentType = ContentType.Text.Plain)
         }
-        UserRoutes(db,jwtService, hashFunction)
 
-
+        UserRoutes(db, jwtService, hashFunction)
 
 }
 }

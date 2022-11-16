@@ -43,7 +43,7 @@ fun Route.UserRoutes(
     jwtService: JwtService,
     hashFunction:(String)->String
 ) {
-    post<UserRegisterRoute> {
+    post("/v1/users/register") {
         val registerRequest = try {
             call.receive<RegisterRequest>()
         } catch (e: Exception) {
