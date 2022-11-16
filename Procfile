@@ -1,1 +1,1 @@
-web: build/libs/Bitco-back/bin/Bitco-back
+web: build/install/Bitco-back/bin/Bitco-back
