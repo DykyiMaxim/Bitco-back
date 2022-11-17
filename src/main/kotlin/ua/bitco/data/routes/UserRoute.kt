@@ -18,26 +18,6 @@ import ua.bitco.domain.model.ChEmailRequest
 import ua.bitco.domain.model.ChNameRequest
 import ua.bitco.domain.model.ChPassRequest
 
-
-const val API_VERSION ="/v1"
-const val USERS ="$API_VERSION/users"
-const val LOGIN_REQUEST ="$USERS/login"
-const val REGISTER_REQUEST ="$USERS/register"
-const val CHANGE_NAME_REQUEST ="$USERS/chname"
-const val CHANGE_EMAIL_REQUEST ="$USERS/chemail"
-const val CHANGE_PASSWORD_REQUEST ="$USERS/chpass"
-
-@Location(REGISTER_REQUEST)
-class UserRegisterRoute
-@Location(LOGIN_REQUEST)
-class UserLoginRoute
-@Location(CHANGE_NAME_REQUEST)
-class UserCHnameRoute
-@Location(CHANGE_EMAIL_REQUEST)
-class UserChemailRoute
-@Location(CHANGE_PASSWORD_REQUEST)
-class UserChPassRoute
-
 fun Route.UserRoutes(
     db: repo,
     jwtService: JwtService,
@@ -66,7 +46,7 @@ fun Route.UserRoutes(
             )
         }
     }
-    post<UserLoginRoute> {
+    post("/v1/users/login") {
         val loginRequest = try {
             call.receive<LoginRequest>()
         } catch (e: Exception) {
@@ -94,7 +74,7 @@ fun Route.UserRoutes(
         }
     }
 
-    post<UserCHnameRoute>{
+    post("/v1/users/chName"){
         val ChNameRequest = try{
             call.receive<ChNameRequest>()
         }catch (e: Exception) {
@@ -107,7 +87,7 @@ fun Route.UserRoutes(
 
     }
 
-    post<UserChemailRoute>{
+    post("/v1/users/chEmail"){
         val ChEmailRequest = try{
             call.receive<ChEmailRequest>()
         }catch (e: Exception) {
@@ -120,7 +100,7 @@ fun Route.UserRoutes(
 
     }
 
-    post<UserChPassRoute>{
+    post("/v1/users/chPass"){
         val ChPassRequest = try{
             call.receive<ChPassRequest>()
         }catch (e: Exception) {
